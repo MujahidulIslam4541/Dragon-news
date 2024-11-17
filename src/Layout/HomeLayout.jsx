@@ -2,6 +2,7 @@ import React from 'react'
 import Header from '../Components/Header'
 import LatestNews from '../Components/LatestNews'
 import Navbar from '../Components/Navbar'
+import LeftAside from '../Components/LayoutComponent/LeftAside'
 
 export default function HomeLayout() {
     return (
@@ -24,7 +25,9 @@ export default function HomeLayout() {
 
             {/* Main section */}
             <main className='w-11/12 mx-auto pt-10 grid md:grid-cols-12 gap-2'>
-                <aside className='col-span-3'>Lest side</aside>
+                <aside className='col-span-3'>
+                    <LeftAside></LeftAside>
+                </aside>
                 <section className='col-span-6'> Main content</section>
                 <aside className='col-span-3'>right side</aside>
             </main>
