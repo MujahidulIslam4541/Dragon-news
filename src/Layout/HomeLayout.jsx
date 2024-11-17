@@ -3,6 +3,7 @@ import Header from '../Components/Header'
 import LatestNews from '../Components/LatestNews'
 import Navbar from '../Components/Navbar'
 import LeftAside from '../Components/LayoutComponent/LeftAside'
+import RightAside from '../Components/LayoutComponent/RightAside'
 
 export default function HomeLayout() {
     return (
@@ -29,7 +30,11 @@ export default function HomeLayout() {
                     <LeftAside></LeftAside>
                 </aside>
                 <section className='col-span-6'> Main content</section>
-                <aside className='col-span-3'>right side</aside>
+
+
+                <aside className='col-span-3'>
+                    <RightAside></RightAside>
+                </aside>
             </main>
 
 
