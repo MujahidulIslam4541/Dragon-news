@@ -1,8 +1,11 @@
-import React from "react";
+/* eslint-disable react/prop-types */
+
 import { FaRegStar, FaEye, FaShareAlt, FaHeart } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const NewsCard = ({ singleNews }) => {
   const {
+    _id,
     author,
     title,
     image_url,
@@ -45,7 +48,7 @@ const NewsCard = ({ singleNews }) => {
         <h2 className="font-bold text-lg leading-snug">{title}</h2>
         <p className="text-sm text-gray-600 mt-2">
           {details.slice(0, 120)}...
-          <span className="text-blue-500 cursor-pointer"> Read More</span>
+          <Link to={`/news/${_id}`} className="text-blue-500 cursor-pointer"> Read More</Link>
         </p>
       </div>
 

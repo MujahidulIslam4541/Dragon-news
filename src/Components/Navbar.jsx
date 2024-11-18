@@ -6,9 +6,8 @@ import { useContext } from 'react'
 
 
 export default function Navbar() {
-    
-const { user } = useContext(AuthContext);
-console.log(user)
+
+    const { user,logOut } = useContext(AuthContext);
     return (
         <div className='flex justify-between items-center'>
             <div className="">{user && user.email}</div>
@@ -23,7 +22,16 @@ console.log(user)
                 <div className=''>
                     <img src={userIcon} alt="" />
                 </div>
-                <Link to={`/auth/login`} className='px-3 py-2 text-white bg-neutral '>Login</Link>
+
+                {
+
+                    user && user.email ?
+                        <button onClick={logOut} className='px-3 py-2 text-white bg-neutral '>Log-Out</button> :
+
+                        <Link to={`/auth/login`} className='px-3 py-2 text-white bg-neutral '>Login</Link>
+
+                }
+
             </div>
         </div>
     )
