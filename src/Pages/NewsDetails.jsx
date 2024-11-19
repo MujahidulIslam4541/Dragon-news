@@ -1,13 +1,12 @@
-import { useLoaderData } from "react-router-dom";
+
 import Header from "../Components/Header";
 import RightAside from "../Components/LayoutComponent/RightAside";
 import NewsDetail from "../Components/NewsDetail";
 
 
 export default function NewsDetails() {
-    const data=useLoaderData()
-    const news=data.data[0]
-    console.log(news)
+    
+    
     return (
         <div>
             {/* header section */}

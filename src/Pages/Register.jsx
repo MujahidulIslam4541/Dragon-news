@@ -16,7 +16,7 @@ export default function Register() {
         const email = form.get('email')
         const photo = form.get('photo')
         const password = form.get('password')
-        console.log({ name, photo, email, password })
+       
 
         createNewUser(email, password)
             .then((result) => {
@@ -28,15 +28,15 @@ export default function Register() {
                     .then(() => {
                         navigate("/")
                     })
-                    .then(error => {
-                        console.log(error)
-                    })
+                    // .then(error => {
+                    //     console.log(error)
+                    // })
             })
-            .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                console.log(errorCode, errorMessage)
-            });
+            // .catch((error) => {
+            //     const errorCode = error.code;
+            //     const errorMessage = error.message;
+            //     console.log(errorCode, errorMessage)
+            // });
     }
 
 

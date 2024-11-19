@@ -8,7 +8,7 @@ export default function Login() {
     // use Location hook catch
     const location=useLocation()
     const navigate=useNavigate()
-    console.log(location)
+    
 
     // error state declare
     const [error,setError]=useState({})
@@ -19,7 +19,7 @@ export default function Login() {
         const from = e.target;
         const email = from.email.value;
         const password = from.password.value;
-        console.log({ email, password })
+        
 
         loginUser(email,password)
         .then((result)=>{
