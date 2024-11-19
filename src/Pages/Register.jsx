@@ -1,14 +1,14 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 
 
 
 export default function Register() {
 
-    const { createNewUser,setUser } = useContext(AuthContext)
+    const { createNewUser, setUser, updateUserProfile } = useContext(AuthContext)
 
-
+    const navigate = useNavigate()
     const handleRegisterSubmit = (e) => {
         e.preventDefault()
         const form = new FormData(e.target)
@@ -19,16 +19,24 @@ export default function Register() {
         console.log({ name, photo, email, password })
 
         createNewUser(email, password)
-        .then((result) => {
-            const user = result.user;
-            setUser(user)
-            console.log(user)
-        })
-        .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            console.log(errorCode, errorMessage)
-        });
+            .then((result) => {
+                const user = result.user;
+                setUser(user);
+                
+                updateUserProfile({ displayName: name, 
+                    photoURL: photo })
+                    .then(() => {
+                        navigate("/")
+                    })
+                    .then(error => {
+                        console.log(error)
+                    })
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                console.log(errorCode, errorMessage)
+            });
     }
 
 
@@ -92,7 +100,7 @@ export default function Register() {
                     <div className="form-control mt-6">
                         <button className="btn btn-neutral rounded-none">Register</button>
                     </div>
-                    <p>Already Have An Account ? <Link to={`/auth/login`}>Login</Link></p>
+                    <p>Already Have An Account ? <Link className="text-red" to={`/auth/login`}>Login</Link></p>
                 </form>
             </div>
         </div>

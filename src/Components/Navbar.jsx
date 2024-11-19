@@ -7,7 +7,7 @@ import { useContext } from 'react'
 
 export default function Navbar() {
 
-    const { user,logOut } = useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
     return (
         <div className='flex justify-between items-center'>
             <div className="">{user && user.email}</div>
@@ -20,7 +20,13 @@ export default function Navbar() {
 
             <div className="logo flex gap-2 items-center">
                 <div className=''>
-                    <img src={userIcon} alt="" />
+                    {
+                        user && user.email ?
+                         <div>
+                            <img className='w-10 rounded-full' src={user.photoURL} alt="" />
+                        </div> 
+                        : <img src={userIcon} alt="" />
+                    }
                 </div>
 
                 {
